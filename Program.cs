@@ -1,24 +1,32 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿#pragma warning disable SKEXP0010
+#pragma warning disable SKEXP0070
+#pragma warning disable SKEXP0110
+
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.Ollama;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
+using SKLearning;
 
-var endpoint = new Uri("http://localhost:11434");
+var endpoint = new Uri("http://localhost:11434/v1/");
 var modelId = "llama3.1:8b";
 
-var builder = Kernel.CreateBuilder();
-#pragma warning disable SKEXP0070 
-builder.Services.AddScoped<IChatCompletionService>(_ => new OllamaChatCompletionService(modelId, endpoint));
-
+var httpClient = new HttpClient();
+var builder = Kernel.CreateBuilder()
+    .AddOpenAIChatCompletion(modelId: modelId!, apiKey: null, endpoint: endpoint, httpClient: httpClient);
 var kernel = builder.Build();
-
-var chatService = kernel.GetRequiredService<IChatCompletionService>();
-
+kernel.Plugins.AddFromType<WeatherPlugin>();
+var settings = new OpenAIPromptExecutionSettings()
+    { Temperature = 0.0, ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };
+var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 var history = new ChatHistory();
-history.AddSystemMessage("This is a llama3 assistant ...");
+var initMessage =
+    "I am a weatherman. I can tell you the weather of any location. Try asking me about the weather of a location.";
+history.AddSystemMessage(initMessage);
+Console.WriteLine(initMessage);
 
 while (true)
 {
+    Console.BackgroundColor = ConsoleColor.Black;
     Console.Write("You:");
 
     var input = Console.ReadLine();
@@ -29,13 +37,14 @@ while (true)
     }
 
     history.AddUserMessage(input);
-
-    var contents = await chatService.GetChatMessageContentsAsync(history);
+    // Get the response from the AI
+    var contents = await chatCompletionService.GetChatMessageContentsAsync(history, settings, kernel);
 
     foreach (var chatMessageContent in contents)
     {
         var content = chatMessageContent.Content;
-        Console.WriteLine($"Ollama: {content}");
+        Console.BackgroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine($"AI: {content}");
         history.AddMessage(chatMessageContent.Role, content ?? "");
     }
 }
