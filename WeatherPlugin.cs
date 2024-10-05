@@ -9,7 +9,7 @@ namespace SKLearning
         [return: Description("Weather details")]        
         public static async Task<string> GetWeatherByLocation([Description("name of the location")]string location)
         {
-            var key = "6fa6f54d2e5942fea80152410240510";
+            var key = "。。";
             var url = @$"http://api.weatherapi.com/v1/current.json?key={key}&q={location}";
             
             using var client = new HttpClient();
