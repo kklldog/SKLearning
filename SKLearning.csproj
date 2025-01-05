@@ -12,11 +12,13 @@
     <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.95.241216.2" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="1.32.0" />
     <PackageReference Include="Microsoft.SemanticKernel.Agents.Core" Version="1.32.0-alpha" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.InMemory" Version="1.32.0-preview" />
     <PackageReference Include="Microsoft.SemanticKernel.Connectors.Ollama" Version="1.32.0-alpha" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.Redis" Version="1.32.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="memory\QiqiZoo.docx">
+    <None Update="kernel_memory\QiqiZoo.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

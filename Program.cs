@@ -1,6 +1,6 @@
-﻿using SKLearning.memory;
+﻿using SKLearning.vector;
 
-var sk = new MemoryTest();
+var sk = new VectorTest();
 
 await sk.Run();
 
