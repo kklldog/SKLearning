@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKLearning", "SKLearning.csproj", "{0BA57242-EF72-4E68-A20B-514A0C6AD211}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKWebApi", "..\SKWebApi\SKWebApi.csproj", "{71F0EAFA-15CF-418B-A8B0-4983EA792BF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKWebApi", "webapi\SKWebApi\SKWebApi.csproj", "{DBABF164-FA49-4144-976B-9261AD707AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{0BA57242-EF72-4E68-A20B-514A0C6AD211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BA57242-EF72-4E68-A20B-514A0C6AD211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BA57242-EF72-4E68-A20B-514A0C6AD211}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71F0EAFA-15CF-418B-A8B0-4983EA792BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71F0EAFA-15CF-418B-A8B0-4983EA792BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71F0EAFA-15CF-418B-A8B0-4983EA792BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71F0EAFA-15CF-418B-A8B0-4983EA792BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBABF164-FA49-4144-976B-9261AD707AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBABF164-FA49-4144-976B-9261AD707AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBABF164-FA49-4144-976B-9261AD707AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBABF164-FA49-4144-976B-9261AD707AA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
